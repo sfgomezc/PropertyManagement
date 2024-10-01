@@ -1,13 +1,13 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PropertyManagementApi.DTOs;
 using PropertyManagementApi.Models;
 using PropertyManagementApi.Services;
 
-namespace PropertyManagementApi.Controllers
+namespace PropertyManagementApi.Controllers.V1
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PropertiesController : ControllerBase

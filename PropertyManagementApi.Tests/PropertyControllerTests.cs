@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using PropertyManagementApi.Controllers;
+using PropertyManagementApi.Controllers.V1;
 using PropertyManagementApi.DTOs;
 using PropertyManagementApi.Models;
 using PropertyManagementApi.Services;
