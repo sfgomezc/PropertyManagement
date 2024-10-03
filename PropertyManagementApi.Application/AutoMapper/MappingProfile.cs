@@ -1,8 +1,8 @@
 using AutoMapper;
-using PropertyManagementApi.DTOs;
-using PropertyManagementApi.Models;
+using PropertyManagementApi.Application.DTOs;
+using PropertyManagementApi.Domain.Entities;
 
-namespace PropertyManagementApi.DTOs
+namespace PropertyManagementApi.Application.AutoMapper
 {
     public class MappingProfile : Profile
     {

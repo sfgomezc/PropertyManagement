@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PropertyManagementApi.DTOs
+namespace PropertyManagementApi.Application.DTOs
 {
     public class PropertyDTO
     {

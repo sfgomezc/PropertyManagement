@@ -1,7 +1,11 @@
-using PropertyManagementApi.DTOs;
-using PropertyManagementApi.Services.Authentication;
+using PropertyManagementApi.Application.AutoMapper;
+using PropertyManagementApi.Application.Contracts;
+using PropertyManagementApi.Application.Contracts.Authentication;
+using PropertyManagementApi.Application.DTOs;
+using PropertyManagementApi.Domain.Contracts;
+using PropertyManagementApi.Domain.Entities;
 
-namespace PropertyManagementApi.Services
+namespace PropertyManagementApi.Application.Services
 {
     public class LoginService : ILoginService
     {

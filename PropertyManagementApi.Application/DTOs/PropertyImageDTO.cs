@@ -1,4 +1,4 @@
-namespace PropertyManagementApi.DTOs
+namespace PropertyManagementApi.Application.DTOs
 {
     public class PropertyImageDTO
     {

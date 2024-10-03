@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using PropertyManagementApi;
-using PropertyManagementApi.Services;
-using PropertyManagementApi.Repositories;
-using PropertyManagementApi.Services.Authentication;
+using PropertyManagementApi.Application.Contracts;
+using PropertyManagementApi.Application.Contracts.Authentication;
+using PropertyManagementApi.Application.Services;
+using PropertyManagementApi.Application.Services.Authentication;
+using PropertyManagementApi.Domain.Contracts;
+using PropertyManagementApi.Infrastructure.Persistence;
+using PropertyManagementApi.Infrastructure.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;

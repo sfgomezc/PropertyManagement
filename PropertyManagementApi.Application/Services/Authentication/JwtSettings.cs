@@ -1,4 +1,4 @@
-namespace PropertyManagementApi.Services.Authentication
+namespace PropertyManagementApi.Application.Services.Authentication
 {
     public class JwtSettings
     {

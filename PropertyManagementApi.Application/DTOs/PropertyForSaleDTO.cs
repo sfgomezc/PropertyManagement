@@ -1,6 +1,6 @@
 using System;
 
-namespace PropertyManagementApi.DTOs
+namespace PropertyManagementApi.Application.DTOs
 {
     public class PropertyForSaleDTO
     {

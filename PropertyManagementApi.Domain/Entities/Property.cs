@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PropertyManagementApi.Models
+namespace PropertyManagementApi.Domain.Entities
 {
     [Table("Property")]
     public class Property

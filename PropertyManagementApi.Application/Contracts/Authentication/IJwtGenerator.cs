@@ -1,4 +1,4 @@
-namespace PropertyManagementApi.Services.Authentication
+namespace PropertyManagementApi.Application.Contracts.Authentication
 {
     public interface IJwtGenerator
     {

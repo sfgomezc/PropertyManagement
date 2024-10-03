@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PropertyManagementApi.Models;
+using PropertyManagementApi.Domain.Contracts;
+using PropertyManagementApi.Domain.Entities;
+using PropertyManagementApi.Infrastructure.Persistence;
 
-namespace PropertyManagementApi.Repositories
+namespace PropertyManagementApi.Infrastructure.Repositories
 {
     public class PropertyRepository : IPropertyRepository
     {

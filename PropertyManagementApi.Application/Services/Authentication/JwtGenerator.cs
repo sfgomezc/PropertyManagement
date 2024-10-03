@@ -3,8 +3,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using PropertyManagementApi.Application.Contracts.Authentication;
 
-namespace PropertyManagementApi.Services.Authentication
+namespace PropertyManagementApi.Application.Services.Authentication
 {
     public class JwtGenerator : IJwtGenerator
     {

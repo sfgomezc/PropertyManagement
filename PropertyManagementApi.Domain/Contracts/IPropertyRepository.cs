@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using PropertyManagementApi.Models;
+using PropertyManagementApi.Domain.Entities;
 
-namespace PropertyManagementApi.Repositories
+namespace PropertyManagementApi.Domain.Contracts
 {
     public interface IPropertyRepository
     {

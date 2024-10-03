@@ -1,9 +1,7 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PropertyManagementApi.DTOs;
-using PropertyManagementApi.Models;
-using PropertyManagementApi.Services;
+using PropertyManagementApi.Application.DTOs;
+using PropertyManagementApi.Application.Contracts;
 
 namespace PropertyManagementApi.Controllers.V1
 {
@@ -13,12 +11,10 @@ namespace PropertyManagementApi.Controllers.V1
     public class PropertiesController : ControllerBase
     {
         private readonly IPropertyService _propertyService;
-        private readonly IMapper _mapper;
 
-        public PropertiesController(IPropertyService propertyService, IMapper mapper)
+        public PropertiesController(IPropertyService propertyService)
         {
             _propertyService = propertyService;
-            _mapper = mapper;
         }
 
         // GET: api/Properties
@@ -26,22 +22,20 @@ namespace PropertyManagementApi.Controllers.V1
         public async Task<ActionResult<IEnumerable<PropertyDTO>>> GetProperties()
         {
             var properties = await _propertyService.GetAllPropertiesAsync();
-            var propertyDTOs = _mapper.Map<IEnumerable<PropertyDTO>>(properties);
-            return Ok(propertyDTOs);
+            return Ok(properties);
         }
 
         // GET: api/Properties/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PropertyDTO>> GetProperty(int id)
         {
-            var property = await _propertyService.GetPropertyByIdAsync(id);
+            var propertyDTO = await _propertyService.GetPropertyByIdAsync(id);
 
-            if (property == null)
+            if (propertyDTO == null)
             {
                 return NotFound();
             }
 
-            var propertyDTO = _mapper.Map<PropertyDTO>(property);
             return Ok(propertyDTO);
         }
 
@@ -49,11 +43,9 @@ namespace PropertyManagementApi.Controllers.V1
         [HttpPost]
         public async Task<ActionResult<PropertyDTO>> CreateProperty(PropertyDTO propertyDTO)
         {
-            var property = _mapper.Map<Property>(propertyDTO);
-            var createdProperty = await _propertyService.CreatePropertyAsync(property);
-            var createdPropertyDTO = _mapper.Map<PropertyDTO>(createdProperty);
+            var createdProperty = await _propertyService.CreatePropertyAsync(propertyDTO);
 
-            return CreatedAtAction(nameof(GetProperty), new { id = createdPropertyDTO.PropertyID }, createdPropertyDTO);
+            return CreatedAtAction(nameof(GetProperty), new { id = createdProperty.PropertyID }, createdProperty);
         }
 
         // PUT: api/Properties/5
@@ -65,8 +57,7 @@ namespace PropertyManagementApi.Controllers.V1
                 return BadRequest("Property ID mismatch");
             }
 
-            var property = _mapper.Map<Property>(propertyDTO);
-            var updatedProperty = await _propertyService.UpdatePropertyAsync(id, property);
+            var updatedProperty = await _propertyService.UpdatePropertyAsync(id, propertyDTO);
 
             if (updatedProperty == null)
             {

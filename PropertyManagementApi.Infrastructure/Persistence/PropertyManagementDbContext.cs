@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using PropertyManagementApi.Models;
+using PropertyManagementApi.Domain.Entities;
 
-namespace PropertyManagementApi
+namespace PropertyManagementApi.Infrastructure.Persistence
 {
     public class PropertyManagementDbContext : DbContext
     {
