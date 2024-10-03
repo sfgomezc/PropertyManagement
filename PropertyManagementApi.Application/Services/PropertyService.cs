@@ -20,18 +20,6 @@ namespace PropertyManagementApi.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<PropertyDTO> CreatePropertyAsync(PropertyDTO propertyDto)
-        {
-            var property = _mapper.Map<Property>(propertyDto);
-            var propertyRepo = await _propertyRepository.AddPropertyAsync(property);
-            return _mapper.Map<PropertyDTO>(propertyRepo);
-        }
-
-        public async Task<bool> DeletePropertyAsync(int id)
-        {
-            return await _propertyRepository.DeletePropertyAsync(id);
-        }
-
         public async Task<IEnumerable<PropertyDTO>> GetAllPropertiesAsync()
         {
             var properties = await _propertyRepository.GetAllPropertiesAsync();
@@ -42,6 +30,24 @@ namespace PropertyManagementApi.Application.Services
         {
             var property = await _propertyRepository.GetPropertyByIdAsync(id);
             return _mapper.Map<PropertyDTO>(property);
+        }
+
+        public async Task<PropertyDTO> CreatePropertyAsync(PropertyDTO propertyDto)
+        {
+            var property = _mapper.Map<Property>(propertyDto);
+            var propertyRepo = await _propertyRepository.AddPropertyAsync(property);
+            return _mapper.Map<PropertyDTO>(propertyRepo);
+        }
+
+        public async Task<PropertyImageDTO?> AddImageToPropertyAsync(int id, PropertyImageDTO propertyImageDTO)
+        {
+            var existingProperty = await _propertyRepository.GetPropertyByIdAsync(id);
+            if (existingProperty == null)
+                return null;
+
+            var propertyImage = _mapper.Map<PropertyImage>(propertyImageDTO);
+            var propertyRepo = await _propertyRepository.AddImageToPropertyAsync(propertyImage);
+            return _mapper.Map<PropertyImageDTO>(propertyRepo);
         }
 
         public async Task<PropertyDTO?> UpdatePropertyAsync(int id, PropertyDTO property)
@@ -59,6 +65,11 @@ namespace PropertyManagementApi.Application.Services
 
             var propertyRepo = await _propertyRepository.UpdatePropertyAsync(existingProperty);
             return _mapper.Map<PropertyDTO>(propertyRepo);
+        }
+
+        public async Task<bool> DeletePropertyAsync(int id)
+        {
+            return await _propertyRepository.DeletePropertyAsync(id);
         }
     }
 }

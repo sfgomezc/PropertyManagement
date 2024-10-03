@@ -62,21 +62,21 @@ namespace PropertyManagementApi.Controllers.V1
             return CreatedAtAction(nameof(GetProperty), new { id = createdProperty.PropertyID }, createdProperty);
         }
 
-        // PUT: api/Properties/AddImagetoProperty/5
+        // PUT: api/Properties/AddImageToProperty/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> AddImagetoProperty(int id, PropertyImageDTO propertyImageDTO)
+        public async Task<IActionResult> AddImageToProperty(int id, PropertyImageDTO propertyImageDTO)
         {
             if (id != propertyImageDTO.PropertyID)
             {
                 return BadRequest("Property ID mismatch");
             }
 
-            // var updatedProperty = await _propertyService.UpdatePropertyAsync(id, propertyDTO);
+            var updatedProperty = await _propertyService.AddImageToPropertyAsync(id, propertyImageDTO);
 
-            // if (updatedProperty == null)
-            // {
-            //     return NotFound();
-            // }
+            if (updatedProperty == null)
+            {
+                return NotFound();
+            }
 
             return NoContent();
         }

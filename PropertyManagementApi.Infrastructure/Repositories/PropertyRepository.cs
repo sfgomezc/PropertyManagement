@@ -16,24 +16,6 @@ namespace PropertyManagementApi.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Property> AddPropertyAsync(Property property)
-        {
-            _context.Properties.Add(property);
-            await _context.SaveChangesAsync();
-            return property;
-        }
-
-        public async Task<bool> DeletePropertyAsync(int id)
-        {
-            var property = await _context.Properties.FindAsync(id);
-            if (property == null)
-                return false;
-
-            _context.Properties.Remove(property);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
         public async Task<IEnumerable<Property>> GetAllPropertiesAsync()
         {
             return await _context.Properties
@@ -52,11 +34,36 @@ namespace PropertyManagementApi.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.PropertyID == id);
         }
 
+        public async Task<Property> AddPropertyAsync(Property property)
+        {
+            _context.Properties.Add(property);
+            await _context.SaveChangesAsync();
+            return property;
+        }
+
+        public async Task<PropertyImage> AddImageToPropertyAsync(PropertyImage propertyImage)
+        {
+            _context.PropertyImages.Add(propertyImage);
+            await _context.SaveChangesAsync();
+            return propertyImage;
+        }
+
         public async Task<Property> UpdatePropertyAsync(Property property)
         {
             _context.Properties.Update(property);
             await _context.SaveChangesAsync();
             return property;
+        }
+
+        public async Task<bool> DeletePropertyAsync(int id)
+        {
+            var property = await _context.Properties.FindAsync(id);
+            if (property == null)
+                return false;
+
+            _context.Properties.Remove(property);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

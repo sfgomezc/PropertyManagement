@@ -9,6 +9,7 @@ namespace PropertyManagementApi.Domain.Contracts
         Task<IEnumerable<Property>> GetAllPropertiesAsync();
         Task<Property?> GetPropertyByIdAsync(int id);
         Task<Property> AddPropertyAsync(Property property);
+        Task<PropertyImage> AddImageToPropertyAsync(PropertyImage  propertyImage);
         Task<Property> UpdatePropertyAsync(Property property);
         Task<bool> DeletePropertyAsync(int id);
     }
