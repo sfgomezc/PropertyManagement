@@ -6,7 +6,7 @@ using PropertyManagementApi.Application.Contracts;
 namespace PropertyManagementApi.Controllers.V1
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class PropertiesController : ControllerBase
     {
@@ -17,7 +17,7 @@ namespace PropertyManagementApi.Controllers.V1
             _propertyService = propertyService;
         }
 
-        // GET: api/Properties
+        // GET: api/Properties/GetProperties
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PropertyDTO>>> GetProperties()
         {
@@ -25,7 +25,7 @@ namespace PropertyManagementApi.Controllers.V1
             return Ok(properties);
         }
 
-        // GET: api/Properties/5
+        // GET: api/Properties/GetProperty/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PropertyDTO>> GetProperty(int id)
         {
@@ -39,7 +39,21 @@ namespace PropertyManagementApi.Controllers.V1
             return Ok(propertyDTO);
         }
 
-        // POST: api/Properties
+        // GET: api/Properties/GetPropertyWithFilters/filter
+        [HttpGet("{filter}")]
+        public async Task<ActionResult<IEnumerable<PropertyDTO>>> GetPropertyWithFilters(string filter)
+        {
+            // var propertyDTO = await _propertyService.GetPropertyByIdAsync(id);
+
+            // if (propertyDTO == null)
+            // {
+            //     return NotFound();
+            // }
+
+            return Ok();
+        }
+
+        // POST: api/Properties/CreateProperty
         [HttpPost]
         public async Task<ActionResult<PropertyDTO>> CreateProperty(PropertyDTO propertyDTO)
         {
@@ -48,7 +62,45 @@ namespace PropertyManagementApi.Controllers.V1
             return CreatedAtAction(nameof(GetProperty), new { id = createdProperty.PropertyID }, createdProperty);
         }
 
-        // PUT: api/Properties/5
+        // PUT: api/Properties/AddImagetoProperty/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AddImagetoProperty(int id, PropertyImageDTO propertyImageDTO)
+        {
+            if (id != propertyImageDTO.PropertyID)
+            {
+                return BadRequest("Property ID mismatch");
+            }
+
+            // var updatedProperty = await _propertyService.UpdatePropertyAsync(id, propertyDTO);
+
+            // if (updatedProperty == null)
+            // {
+            //     return NotFound();
+            // }
+
+            return NoContent();
+        }
+
+        // PUT: api/Properties/ChangePriceToProperty/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ChangePriceToProperty(int id, PropertyForSaleDTO propertyForSaleDTO)
+        {
+            if (id != propertyForSaleDTO.PropertyID)
+            {
+                return BadRequest("Property ID mismatch");
+            }
+
+            // var updatedProperty = await _propertyService.UpdatePropertyAsync(id, propertyDTO);
+
+            // if (updatedProperty == null)
+            // {
+            //     return NotFound();
+            // }
+
+            return NoContent();
+        }
+
+        // PUT: api/Properties/UpdateProperty/5
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProperty(int id, PropertyDTO propertyDTO)
         {
