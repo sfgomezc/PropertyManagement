@@ -32,6 +32,12 @@ namespace PropertyManagementApi.Application.Services
             return _mapper.Map<PropertyDTO>(property);
         }
 
+        public async Task<PropertyDTO?> GetPropertyWithFiltersAsync(string filter)
+        {
+            var property = await _propertyRepository.GetPropertyWithFiltersAsync(filter);
+            return _mapper.Map<PropertyDTO>(property);
+        }
+
         public async Task<PropertyDTO> CreatePropertyAsync(PropertyDTO propertyDto)
         {
             var property = _mapper.Map<Property>(propertyDto);

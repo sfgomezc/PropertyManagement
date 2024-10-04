@@ -43,14 +43,14 @@ namespace PropertyManagementApi.Controllers.V1
         [HttpGet("{filter}")]
         public async Task<ActionResult<IEnumerable<PropertyDTO>>> GetPropertyWithFilters(string filter)
         {
-            // var propertyDTO = await _propertyService.GetPropertyByIdAsync(id);
+            var propertiesDTO = await _propertyService.GetPropertyWithFiltersAsync(filter);
 
-            // if (propertyDTO == null)
-            // {
-            //     return NotFound();
-            // }
+            if (propertiesDTO == null)
+            {
+                return NotFound();
+            }
 
-            return Ok();
+            return Ok(propertiesDTO);
         }
 
         // POST: api/Properties/CreateProperty

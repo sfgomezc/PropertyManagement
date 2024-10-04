@@ -34,6 +34,18 @@ namespace PropertyManagementApi.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.PropertyID == id);
         }
 
+        public async Task<Property?> GetPropertyWithFiltersAsync(string filter)
+        {
+            return await _context.Properties
+                .Include(p => p.PropertiesForSale)
+                .Include(p => p.PropertyImages)
+                .Include(p => p.PropertyTraces)
+                .FirstOrDefaultAsync(p => p.Address.Contains(filter) || 
+                    p.City.Contains(filter) || 
+                    p.State.Contains(filter) || 
+                    p.Description.Contains(filter));
+        }
+
         public async Task<Property> AddPropertyAsync(Property property)
         {
             _context.Properties.Add(property);
