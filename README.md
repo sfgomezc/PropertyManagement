@@ -32,16 +32,16 @@ Use this payload to get JWT token:
 
 ![alt text](https://github.com/sfgomezc/PropertyManagement/blob/master/Captures/Img_PropertyManagementApi1.png?raw=true)
 
-**Endpoint to get all properties:**
+**Endpoint to get all properties:**  
 GET: api/Properties/GetProperties
 
-**Endpoint to get a property by ID:**
+**Endpoint to get a property by ID:**  
 GET: api/Properties/GetProperty/3
 
-**Endpoint to list properties by filters:**
+**Endpoint to list properties by filters:**  
 GET: api/Properties/GetPropertyWithFilters/filter
 
-**Endpoint to create a property:**
+**Endpoint to create a property:**  
 POST: api/Properties/CreateProperty
 ```
 {
@@ -61,7 +61,7 @@ POST: api/Properties/CreateProperty
 }
 ```
 
-**Endpoint to add an image to a property:**
+**Endpoint to add an image to a property:**  
 PUT: api/Properties/AddImagetoProperty/3
 ```
 {
