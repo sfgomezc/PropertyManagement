@@ -12,7 +12,7 @@ namespace PropertyManagementApi.Application.DTOs
         public required string Description { get; set; }
 
         // Related Entities
-        public ICollection<PropertyForSaleDTO>? PropertiesForSale { get; set; }
+        public required ICollection<PropertyForSaleDTO> PropertiesForSale { get; set; }
         public ICollection<PropertyImageDTO>? PropertyImages { get; set; }
         public ICollection<PropertyTraceDTO>? PropertyTraces { get; set; }
     }
