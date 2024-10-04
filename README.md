@@ -32,29 +32,42 @@ Use this payload to get JWT token:
 
 ![alt text](https://github.com/sfgomezc/PropertyManagement/blob/master/Captures/Img_PropertyManagementApi1.png?raw=true)
 
+**Endpoint to get all properties:**
 GET: api/Properties/GetProperties
 
+**Endpoint to get a property by ID:**
 GET: api/Properties/GetProperty/3
 
+**Endpoint to list properties by filters:**
 GET: api/Properties/GetPropertyWithFilters/filter
 
+**Endpoint to create a property:**
 POST: api/Properties/CreateProperty
 ```
 {
-  "address": "string",
-  "city": "string",
-  "state": "string",
-  "zipCode": "string",
-  "description": "string"
+  "address": "Adrees",
+  "city": "City",
+  "state": "State",
+  "zipCode": "Zip code",
+  "description": "Full description",
+  "propertiesForSale": [
+    {
+      "ownerID": 1,
+      "price": 500000,
+      "dateListed": "2024-10-04T04:29:57.976Z",
+      "isActive": true
+    }
+  ]
 }
 ```
 
+**Endpoint to add an image to a property:**
 PUT: api/Properties/AddImagetoProperty/3
 ```
 {
-  "propertyID": 0,
-  "imageData": "string",
-  "description": "string"
+  "propertyID": 1,
+  "imageData": "Image from base64",
+  "description": "Image description"
 }
 ```
 
